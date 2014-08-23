@@ -39,25 +39,36 @@ public class main {
 
 			System.out.println("\n>>>>>" + currString + "<<<<<");		// for debug purpose
 
+			/**
+			 * This part of code will determine whether the first word is a keyword or not.
+			 * if not a keyword - discard
+			 * if is a keyword - store
+			 */
 			for(int k = 0; k < shifted.length; k++)
 			{	
 				System.out.print(StringArrayToString(shifted));
-				if(NotInIgnoreSet(shifted[0]))
+				if(isKeyword(shifted[0]))
 				{
 					System.out.println(" - Stored~~");		// for debug purpose
-					
+
 					// convert string[] to string for storage
 					stringSet.add( StringArrayToString(shifted) );
 				}
 				else
 					System.out.println(" - Discard");		// for debug purpose
 
+				/**
+				 * this part of code will circular shift the sequence of the input 
+				 * according to number of words in the input 
+				 */
 				// circular shifter
 				shifted = CircularShifter(shifted);
 			}
 		}
 
-		// Output stringSet in alphabetical order
+		/** 
+		 * This part of code simply Output stringSet in alphabetical order
+		 */
 		Iterator<String> itr = stringSet.iterator();
 
 		System.out.println("\nFinal output:");
@@ -79,6 +90,7 @@ public class main {
 		temp.addLast(firstWord);
 
 		temp.toArray(result);
+		temp = null;
 		return result;
 	}
 
@@ -89,7 +101,8 @@ public class main {
 		for(int i = 0; i < _input.length; i++)
 		{
 			convertCase = false;
-			if(NotInIgnoreSet( _input[i]) )
+			
+			if(isKeyword( _input[i]) )
 			{
 				if(_input[i].charAt(0) >= 'a' && _input[i].charAt(0) <= 'z')
 					convertCase = true;
@@ -104,13 +117,12 @@ public class main {
 				result += CaseInterchanger(_input[i]) + " ";
 			else
 				result += _input[i] + " ";
-
 		}
 		return result;
 	}
 
 	// this function will ensure the checking is case insensitive
-	public static boolean NotInIgnoreSet(String _input)
+	public static boolean isKeyword(String _input)
 	{	
 		if(ignoreSet.contains( _input ) || ignoreSet.contains( CaseInterchanger(_input) ))
 			return false;
@@ -118,17 +130,18 @@ public class main {
 		return true;
 	}
 
-	
 	// this function will toggle the case of the first char of input string
+	// only interchange cases of alphabet
 	public static String CaseInterchanger(String _input)
 	{
 		char target = _input.charAt(0);
 		char result = 0;
-		
+
+		// checking for special characters other than alphabet
 		if(target > 'z' || target < 'A' || (target >'Z' && target < 'a') )
 			return _input;
-		
-		
+
+
 		if(target >= 'a' && target <= 'z')
 		{
 			int value = target -'a';
@@ -155,6 +168,7 @@ public class main {
 		inputSet.add("      ");
 		inputSet.add("Fast and Furious");
 		inputSet.add("Man of Steel");
+		inputSet.add("is a the after for");
 
 		ignoreSet.add("is");
 		ignoreSet.add("the");
