@@ -65,6 +65,7 @@ public class main {
 			}
 		}
 
+		System.out.println("chelsea testing");
 		System.out.println("Final output: \n" + stringSet.toString());
 
 
