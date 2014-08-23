@@ -26,6 +26,28 @@ public class main {
 		temp.sort(null);
 		
 		System.out.println(temp.toString());
+		
+		Set<String> ignoreSet = new HashSet<String>();
+		Set<String> stringSet = new HashSet<String>();
+		stringSet.add("simple testing is this a");
+		
+		ignoreSet.add("is");
+		ignoreSet.add("a");
+		ignoreSet.add("the");
+		ignoreSet.add("after");
+		
+		if(ignoreSet.contains(temp.toArray()[0]))
+		{
+			String finalStr = temp.subList(1, temp.size()).toString();
+			finalStr+= temp.get(0);
+			
+		}
+		
+		
+		
+		
+		
+		
 
 	}
 
