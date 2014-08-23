@@ -31,18 +31,23 @@ public class main {
 			String currString = currentList[i];
 			String[] choppedString = new String[currString.length()];
 			choppedString = currString.split(" ");
+			String[] shifted = choppedString;
 
-			//for(int j = 0; j < choppedString.length; j++)
-			//{
-				if(ignoreSet.contains( choppedString[0]) )
+			System.out.println(">>>>>" + currString + "<<<<<");
+			
+			for(int k = 0; k < choppedString.length; k++)
+			{
+				if(ignoreSet.contains( shifted[0])  )
 				{
 					// do nothing
 				}
 				else
 				{
-					stringSet.add(currString);
+					String newKeyFoundString = "";
+					for(int shiftedInd = 0; shiftedInd < shifted.length; shiftedInd++)
+						newKeyFoundString+= shifted[shiftedInd] + " ";
+					stringSet.add(newKeyFoundString);
 				}
-			//}
 				
 				// shifter
 				int j = 0;
@@ -56,10 +61,11 @@ public class main {
 				// end of shifter
 				
 				System.out.println(temp);
-				
+				temp.toArray(shifted);
+			}
 		}
 
-		//System.out.println(stringSet.toString());
+		System.out.println("Final output: \n" + stringSet.toString());
 
 
 
