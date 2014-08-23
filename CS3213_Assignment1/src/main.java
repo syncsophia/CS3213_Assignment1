@@ -4,50 +4,64 @@ import java.util.*;
 public class main {
 
 	public static void main(String[] args) {
-		Map<String, String> myMap = new HashMap<String, String>();
-		
-		// TODO Auto-generated method stub
-		System.out.println("Hello World");
-		
-		// do simple sorting
-		String input = "this is a simple testing";
-		ArrayList<String> temp = new ArrayList<String>();
-		String[] splitList = new String[10];
-		
-		splitList = input.split(" ");
-		
-		for(int i = 0; i < splitList.length; i++)
-		{
-			System.out.println(splitList[i]);
-			
-			temp.add(splitList[i]);
-		}
-		
-		temp.sort(null);
-		
-		System.out.println(temp.toString());
-		
+
+		// initialization
 		Set<String> ignoreSet = new HashSet<String>();
+		Set<String> inputSet = new HashSet<String>();
 		Set<String> stringSet = new HashSet<String>();
-		stringSet.add("simple testing is this a");
-		
-		ignoreSet.add("is");
+
+		// testing set of data
+		inputSet.add("the star is blind");
+		inputSet.add("love of blind");
+		inputSet.add("the love of star");
+		inputSet.add("blind birds in love");
+
 		ignoreSet.add("a");
+		ignoreSet.add("of");
 		ignoreSet.add("the");
-		ignoreSet.add("after");
-		
-		if(ignoreSet.contains(temp.toArray()[0]))
+		ignoreSet.add("is");
+
+		// process
+		String[] currentList = new String[inputSet.size()];		
+		inputSet.toArray(currentList);
+		int inputSize = inputSet.size();
+
+		for(int i = 0; i < inputSize; i++)
 		{
-			String finalStr = temp.subList(1, temp.size()).toString();
-			finalStr+= temp.get(0);
-			
+			String currString = currentList[i];
+			String[] choppedString = new String[currString.length()];
+			choppedString = currString.split(" ");
+
+			//for(int j = 0; j < choppedString.length; j++)
+			//{
+				if(ignoreSet.contains( choppedString[0]) )
+				{
+					// do nothing
+				}
+				else
+				{
+					stringSet.add(currString);
+				}
+			//}
+				
+				// shifter
+				int j = 0;
+				LinkedList<String> temp = new LinkedList<String>();
+				while(j < choppedString.length)
+				{
+					temp.add(choppedString[j++]);
+				}
+				String firstWord = temp.pop();
+				temp.addLast(firstWord);
+				// end of shifter
+				
+				System.out.println(temp);
+				
 		}
-		
-		
-		
-		
-		
-		
+
+		//System.out.println(stringSet.toString());
+
+
 
 	}
 
