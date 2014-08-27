@@ -96,6 +96,8 @@ public class main {
 		System.out.println("\nFinal output:");
 		while(itr.hasNext())
 			System.out.println(itr.next());
+		
+		System.out.println("testing again");
 
 	}// end of main
 
