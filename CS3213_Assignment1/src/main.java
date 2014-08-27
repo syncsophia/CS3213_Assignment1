@@ -187,7 +187,7 @@ public class main {
 //		inputSet.add("Man of Steel");
 //		inputSet.add("1000 Night of Sadness");
 //		inputSet.add("   v for vendetta   ");
-//		inputSet.add("RED BLACK GREEN iS");
+//		inputSet.add("      ");
 //		inputSet.add("Fast and Furious");
 //		inputSet.add("Man of Steel");
 //		inputSet.add("is a the after for");
