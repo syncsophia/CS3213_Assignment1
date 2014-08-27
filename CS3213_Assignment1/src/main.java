@@ -1,18 +1,40 @@
 import java.util.*;
-
+import java.io.*;
 
 public class main {
 
+	public static String inputLine;
 	public static Set<String> ignoreSet = new HashSet<String>();
 	public static Set<String> inputSet = new HashSet<String>();
 	public static Set<String> stringSet = new TreeSet<String>();
 
+	public static void inputTitles() {
+		
+		System.out.println("Enter titles:");
+		
+		BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+		try {
+			while ( (inputLine = buffer.readLine()) != null) {
+				if (inputLine.equals("continue")) { 
+					break; 
+				}
+				else {
+					inputSet.add(inputLine);
+				}
+			}
+		} 
+		catch (IOException ioe)
+		{
+			System.out.println("I/O exception thrown");
+		}
+	}
+	
 	public static void main(String[] args) {
 		// initialization
 		init();
 
 		// Handle user input
-
+		inputTitles();
 
 		// process
 		String currString = null;
@@ -160,15 +182,15 @@ public class main {
 	public static void init()
 	{
 		// testing set of data
-		inputSet.add("The Day after Tomorrow");
-		inputSet.add("Fast and Furious");
-		inputSet.add("Man of Steel");
-		inputSet.add("1000 Night of Sadness");
-		inputSet.add("   v for vendetta   ");
-		inputSet.add("      ");
-		inputSet.add("Fast and Furious");
-		inputSet.add("Man of Steel");
-		inputSet.add("is a the after for");
+//		inputSet.add("The Day after Tomorrow");
+//		inputSet.add("Fast and Furious");
+//		inputSet.add("Man of Steel");
+//		inputSet.add("1000 Night of Sadness");
+//		inputSet.add("   v for vendetta   ");
+//		inputSet.add("RED BLACK GREEN iS");
+//		inputSet.add("Fast and Furious");
+//		inputSet.add("Man of Steel");
+//		inputSet.add("is a the after for");
 
 		ignoreSet.add("is");
 		ignoreSet.add("the");
