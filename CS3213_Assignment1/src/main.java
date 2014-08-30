@@ -7,19 +7,23 @@ public class main {
 	public static Set<String> ignoreSet = new HashSet<String>();
 	public static Set<String> inputSet = new HashSet<String>();
 	public static Set<String> stringSet = new TreeSet<String>();
-
-	public static void inputTitles() {
-		
-		System.out.println("Enter titles:");
+	
+	public static Set<String> inputWordSet(Set<String> _inputSet) {		
+		if (_inputSet.equals(inputSet)) {
+			System.out.println("Titles:");
+		}
+		else if (_inputSet.equals(ignoreSet)) {
+			System.out.println("Ignore:");
+		}
 		
 		BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			while ( (inputLine = buffer.readLine()) != null) {
-				if (inputLine.equals("continue")) { 
+				if (inputLine.equals("continue~")) { 
 					break; 
 				}
 				else {
-					inputSet.add(inputLine);
+					_inputSet.add(inputLine);
 				}
 			}
 		} 
@@ -27,6 +31,7 @@ public class main {
 		{
 			System.out.println("I/O exception thrown");
 		}
+		return _inputSet;
 	}
 	
 	public static void main(String[] args) {
@@ -34,7 +39,13 @@ public class main {
 		init();
 
 		// Handle user input
-		inputTitles();
+		System.out.println(
+				"Welcome! Enter a list of titles first.\n"
+				+ "Type \"continue~\" to continue.");
+		
+		inputSet = inputWordSet(inputSet);
+		ignoreSet = inputWordSet(ignoreSet);
+		
 
 		// process
 		String currString = null;
@@ -194,14 +205,14 @@ public class main {
 //		inputSet.add("Man of Steel");
 //		inputSet.add("is a the after for");
 
-		ignoreSet.add("is");
-		ignoreSet.add("the");
-		ignoreSet.add("of");
-		ignoreSet.add("and");
-		ignoreSet.add("as");
-		ignoreSet.add("a");
-		ignoreSet.add("after");
-		ignoreSet.add("For");
+//		ignoreSet.add("is");
+//		ignoreSet.add("the");
+//		ignoreSet.add("of");
+//		ignoreSet.add("and");
+//		ignoreSet.add("as");
+//		ignoreSet.add("a");
+//		ignoreSet.add("after");
+//		ignoreSet.add("For");
 	}
 
 
