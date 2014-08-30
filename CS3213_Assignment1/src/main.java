@@ -47,7 +47,7 @@ public class main {
 		ignoreSet = inputWordSet(ignoreSet);
 		
 
-		// process
+		// Main processing logic
 		String currString = null;
 		Iterator<String> inputItr = inputSet.iterator();
 
@@ -108,8 +108,6 @@ public class main {
 		while(itr.hasNext())
 			System.out.println(itr.next());
 		
-		System.out.println("testing again");
-
 	}// end of main
 
 
@@ -159,9 +157,16 @@ public class main {
 	// this function will ensure the checking is case insensitive
 	public static boolean isKeyword(String _input)
 	{	
-		if(ignoreSet.contains( _input ) || ignoreSet.contains( CaseInterchanger(_input) ))
-			return false;
-
+		Iterator<String> itr = ignoreSet.iterator();
+		String current;
+		
+		while(itr.hasNext())
+		{
+			current = itr.next();
+			
+			if(current.compareToIgnoreCase(_input) == 0 )
+				return false;
+		}
 		return true;
 	}
 
@@ -173,10 +178,12 @@ public class main {
 		char result = 0;
 
 		// checking for special characters other than alphabet
+		// there is no changes if the input string is not alphabet
 		if(target > 'z' || target < 'A' || (target >'Z' && target < 'a') )
 			return _input;
 
-
+		// this part will convert the first char of the input string 
+		// from lower case to upper case and vice versa
 		if(target >= 'a' && target <= 'z')
 		{
 			int value = target -'a';
